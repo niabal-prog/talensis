@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Talensis | Trouvez le bon cabinet de recrutement</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  @font-face {
+    font-family: 'Helvetica Now';
+    src: local('Helvetica Neue'), local('HelveticaNeue'), local('Helvetica'), local('Arial');
+    font-weight: 100 900;
+  }
+</style>
+<style>
+  :root {
+    --blue: #3333FF;
+    --green: #AAFF5E;
+    --dark: #111;
+    --white: #fff;
+    --light-bg: #f5f5f5;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'DM Sans', sans-serif; color: var(--dark); background: var(--white); }
+
+  /* NAV */
+  nav {
+    background: var(--blue);
+    padding: 14px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .logo {
+    font-family: 'Helvetica Now', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: var(--white);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .nav-tagline {
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.7);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--blue);
+    min-height: 520px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 60px 48px 0 48px;
+    overflow: hidden;
+    position: relative;
+  }
+  .hero-text { z-index: 2; }
+  .hero h1 {
+    font-family: 'Helvetica Now', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 800;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    color: var(--white);
+    line-height: 1.15;
+    margin-bottom: 20px;
+  }
+  .hero p {
+    color: rgba(255,255,255,0.85);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    max-width: 400px;
+    margin-bottom: 10px;
+  }
+  .hero p strong { color: var(--green); font-weight: 600; }
+  .btn-primary {
+    display: inline-block;
+    margin-top: 24px;
+    padding: 12px 24px;
+    background: transparent;
+    border: 2px solid var(--green);
+    color: var(--green);
+    font-family: 'Helvetica Now', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.25s;
+  }
+  .btn-primary:hover { background: var(--green); color: var(--blue); }
+  .hero-image {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    height: 100%;
+  }
+  .hero-image img {
+    max-height: 480px;
+    object-fit: cover;
+    border-radius: 8px 8px 0 0;
+  }
+  .hero-shape {
+    position: absolute;
+    right: 30%;
+    top: 20px;
+    width: 120px;
+    height: 120px;
+    background: var(--green);
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    opacity: 0.15;
+  }
+
+  /* PAIN POINTS */
+  .pain {
+    padding: 80px 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    background: var(--white);
+  }
+  .pain-title {
+    font-family: 'Helvetica Now', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 800;
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.1;
+  }
+  .pain-title .green { color: #22cc22; }
+  .pain-list { display: flex; flex-direction: column; gap: 24px; }
+  .pain-item { display: flex; gap: 16px; align-items: flex-start; }
+  .pain-icon {
+    width: 36px; height: 36px; min-width: 36px;
+    background: var(--blue);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-size: 0.85rem; font-weight: 700;
+  }
+  .pain-item-text h4 {
+    font-family: 'Helvetica Now', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 4px;
+  }
+  .pain-item-text p { font-size: 0.88rem; color: #555; line-height: 1.5; }
+
+  /* SELECTION */
+  .selection {
+    background: var(--blue);
+    padding: 80px 48px;
+    text-align: center;
+  }
+  .selection h2 {
+    font-family: 'Helvetica Now', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 800;
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    color: var(--white);
+    margin-bottom: 48px;
+  }
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .card {
+    background: rgba(255,255,255,0.12);
+    border-radius: 12px;
+    overflow: hidden;
+    text-align: left;
+  }
+  .card img { width: 100%; height: 180px; object-fit: cover; display: block; }
+  .card-label {
+    padding: 14px 16px;
+    font-family: 'Helvetica Now', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.9);
+    font-weight: 600;
+  }
+
+  /* COMMENT ÇA MARCHE */
+  .how {
+    padding: 80px 48px;
+    background: var(--white);
+  }
+  .how h2 {
+    font-family: 'Helvetica Now', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 800;
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    margin-bottom: 48px;
+    color: var(--dark);
+  }
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+  .step { display: flex; flex-direction: column; gap: 16px; }
+  .step-img { width: 100%; height: 200px; object-fit: cover; border-radius: 10px; background: #e8e8e8; }
+  .step-num {
+    font-family: 'Helvetica Now', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--blue);
+    font-weight: 700;
+  }
+  .step h3 {
+    font-family: 'Helvetica Now', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .step p { font-size: 0.88rem; color: #666; line-height: 1.5; }
+  .btn-link {
+    display: inline-block;
+    margin-top: 8px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--blue);
+    text-decoration: underline;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+  }
+
+  /* POUR QUI */
+  .for-who {
+    padding: 80px 48px;
+    background: var(--light-bg);
+  }
+  .for-who h2 {
+    font-family: 'Helvetica Now', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 800;
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    margin-bottom: 40px;
+  }
+  .who-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .who-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 28px;
+    border: 2px solid transparent;
+    transition: border-color 0.2s;
+  }
+  .who-card:hover { border-color: var(--blue); }
+  .who-card-icon {
+    width: 32px; height: 32px;
+    background: var(--blue);
+    border-radius: 50%;
+    margin-bottom: 16px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .who-card-icon svg { width: 16px; fill: white; }
+  .who-card h3 {
+    font-family: 'Helvetica Now', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 12px;
+    color: var(--blue);
+  }
+  .who-card ul { list-style: none; padding: 0; }
+  .who-card ul li {
+    font-size: 0.88rem;
+    color: #444;
+    padding: 3px 0;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .who-card ul li::before { content: "•"; color: var(--blue); font-weight: 700; }
+
+  /* SERVICE GRATUIT */
+  .free {
+    padding: 80px 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    background: var(--white);
+  }
+  .free-text h2 {
+    font-family: 'Helvetica Now', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 800;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    line-height: 1.1;
+    margin-bottom: 32px;
+  }
+  .free-badge {
+    background: var(--green);
+    border-radius: 12px;
+    padding: 20px 24px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    max-width: 340px;
+  }
+  .free-badge-icon {
+    width: 36px; height: 36px; min-width: 36px;
+    background: var(--blue);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-size: 0.9rem; font-weight: 700;
+  }
+  .free-badge p { font-size: 0.9rem; line-height: 1.5; color: #222; font-weight: 500; }
+  .free-image img { width: 100%; border-radius: 16px; object-fit: cover; max-height: 400px; }
+
+  /* CTA FINAL */
+  .cta-final {
+    background: var(--blue);
+    padding: 80px 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  .cta-final-img img { width: 100%; border-radius: 12px; max-height: 360px; object-fit: cover; }
+  .cta-text h2 {
+    font-family: 'Helvetica Now', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 800;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 32px;
+  }
+  .btn-cta {
+    display: inline-block;
+    padding: 14px 28px;
+    background: transparent;
+    border: 2px solid var(--green);
+    color: var(--green);
+    font-family: 'Helvetica Now', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.25s;
+  }
+  .btn-cta:hover { background: var(--green); color: var(--blue); }
+
+  /* FOOTER */
+  footer {
+    background: var(--blue);
+    border-top: 1px solid rgba(255,255,255,0.15);
+    padding: 20px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  footer .logo { font-size: 0.9rem; }
+  footer p { font-size: 0.78rem; color: rgba(255,255,255,0.6); }
+
+  /* PLACEHOLDER IMAGES */
+  .img-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #c8c8ff 0%, #a0a0e8 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.5);
+    font-size: 2rem;
+    border-radius: inherit;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 14px 24px; }
+    .hero { grid-template-columns: 1fr; padding: 40px 24px 0; }
+    .hero-image { display: none; }
+    .pain, .free, .cta-final { grid-template-columns: 1fr; padding: 48px 24px; }
+    .selection, .how, .for-who { padding: 48px 24px; }
+    .cards-grid, .steps-grid, .who-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 8px; padding: 20px 24px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div>
+    <div class="logo">◆ TALENSIS</div>
+    <div class="nav-tagline">Trouvez le bon cabinet pour vos talents</div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <h1>Trouvez le bon cabinet de recrutement pour vos projets CDI et Freelance, en Banque & Assurance.</h1>
+    <p>Nous sélectionnons pour vous les meilleurs partenaires spécialistes. Service 100% digital et <strong>gratuit</strong> pour les entreprises.</p>
+    <a href="#formulaire" class="btn-primary">Analyser mon besoin</a>
+  </div>
+  <div class="hero-image">
+    <a href="https://storyset.com/online" target="_blank" rel="noopener">
+      <img src="Webinar-cuate.png" alt="Online illustrations by Storyset" style="max-height:480px;width:100%;object-fit:contain;border-radius:12px 12px 0 0;" />
+    </a>
+  </div>
+  <div class="hero-shape"></div>
+</section>
+
+<!-- PAIN POINTS -->
+<section class="pain">
+  <div class="pain-title">
+    Trop de cabinets.<br>Pas assez de <span class="green">visibilité.</span>
+  </div>
+  <div class="pain-list">
+    <div class="pain-item">
+      <div class="pain-icon">✕</div>
+      <div class="pain-item-text">
+        <h4>Manque de temps</h4>
+        <p>Sélectionner les sites, faire des tomas prend un temps précieux.</p>
+      </div>
+    </div>
+    <div class="pain-item">
+      <div class="pain-icon">✕</div>
+      <div class="pain-item-text">
+        <h4>Manque de visibilité</h4>
+        <p>Pas de visibilité sur les cabinets de recrutement : il en existe 2000, nous les connaissons.</p>
+      </div>
+    </div>
+    <div class="pain-item">
+      <div class="pain-icon">✕</div>
+      <div class="pain-item-text">
+        <h4>Manque de comparabilité</h4>
+        <p>On vous parle de structures, on ne saura pas avant d'avoir travaillé avec eux.</p>
+      </div>
+    </div>
+    <div class="pain-item">
+      <div class="pain-icon">✕</div>
+      <div class="pain-item-text">
+        <h4>Manque de spécialisation réelle</h4>
+        <p>Nous travaillons uniquement avec des cabinets spécialisés dans vos niches.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SELECTION -->
+<section class="selection">
+  <h2>Nous faisons la sélection pour vous.</h2>
+  <div class="cards-grid">
+    <div class="card">
+      <a href="https://storyset.com/people" target="_blank" rel="noopener">
+        <img src="Select-cuate.png" alt="People illustrations by Storyset" style="width:100%;height:200px;object-fit:contain;background:#1a1a2e;" />
+      </a>
+      <div class="card-label">Sélection spécialisée</div>
+    </div>
+    <div class="card">
+      <a href="https://storyset.com/people" target="_blank" rel="noopener">
+        <img src="Select-bro.png" alt="People illustrations by Storyset" style="width:100%;height:200px;object-fit:contain;background:#1a1a2e;" />
+      </a>
+      <div class="card-label">Matching qualité</div>
+    </div>
+    <div class="card">
+      <a href="https://storyset.com/work" target="_blank" rel="noopener">
+        <img src="Customer_relationship_management-rafiki.png" alt="Work illustrations by Storyset" style="width:100%;height:200px;object-fit:contain;background:#1a1a2e;" />
+      </a>
+      <div class="card-label">Mise en relation rapide</div>
+    </div>
+    <div class="card">
+      <a href="https://storyset.com/online" target="_blank" rel="noopener">
+        <img src="Online_world-amico.png" alt="Online illustrations by Storyset" style="width:100%;height:200px;object-fit:contain;background:#1a1a2e;" />
+      </a>
+      <div class="card-label">100% digital</div>
+    </div>
+  </div>
+</section>
+
+<!-- COMMENT ÇA MARCHE -->
+<section class="how">
+  <h2>Comment ça fonctionne</h2>
+  <div class="steps-grid">
+    <div class="step">
+      <a href="https://storyset.com/business" target="_blank" rel="noopener">
+        <img src="Business_analytics-cuate.png" alt="Business illustrations by Storyset" style="width:100%;height:200px;object-fit:contain;background:#f7f7f7;border-radius:10px;" />
+      </a>
+      <div class="step-num">Étape 1</div>
+      <h3>Analyse de votre besoin</h3>
+      <p>Remplir un formulaire en ligne.</p>
+    </div>
+    <div class="step">
+      <a href="https://storyset.com/education" target="_blank" rel="noopener">
+        <img src="Choose-rafiki.png" alt="Education illustrations by Storyset" style="width:100%;height:200px;object-fit:contain;background:#f7f7f7;border-radius:10px;" />
+      </a>
+      <div class="step-num">Étape 2</div>
+      <h3>Sélection stratégique</h3>
+      <p>Nous identifions le partenaire adapté à votre contexte.</p>
+    </div>
+    <div class="step">
+      <a href="https://storyset.com/communication" target="_blank" rel="noopener">
+        <img src="Customer_relationship_management-amico.png" alt="Communication illustrations by Storyset" style="width:100%;height:200px;object-fit:contain;background:#f7f7f7;border-radius:10px;" />
+      </a>
+      <div class="step-num">Étape 3</div>
+      <h3>Mise en relation qualifiée</h3>
+      <p>Connexion directe avec un interlocuteur pertinent.</p>
+    </div>
+  </div>
+</section>
+
+<!-- POUR QUI -->
+<section class="for-who">
+  <h2>Pour qui ?</h2>
+  <div class="who-grid">
+    <div class="who-card">
+      <div class="who-card-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>
+      </div>
+      <h3>Entreprises</h3>
+      <ul>
+        <li>Banques</li>
+        <li>Assurances</li>
+        <li>Réassurances</li>
+        <li>Asset managers</li>
+        <li>Structures financières spécialisées</li>
+      </ul>
+    </div>
+    <div class="who-card">
+      <div class="who-card-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>
+      </div>
+      <h3>Types de besoins</h3>
+      <ul>
+        <li>CDI</li>
+        <li>Freelance</li>
+        <li>Data, IT</li>
+      </ul>
+    </div>
+    <div class="who-card">
+      <div class="who-card-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>
+      </div>
+      <h3>Expertise</h3>
+      <ul>
+        <li>Data</li>
+        <li>IA</li>
+        <li>Actuariat et Souscription</li>
+        <li>Audit</li>
+        <li>Risque</li>
+        <li>Conformité</li>
+        <li>Finance Qualitative</li>
+        <li>Finance d'entreprise</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE GRATUIT -->
+<section class="free">
+  <div class="free-text">
+    <h2>Service gratuit pour les entreprises</h2>
+    <div class="free-badge">
+      <div class="free-badge-icon">✓</div>
+      <p>Nous sommes rémunérés par les cabinets de recrutement</p>
+    </div>
+  </div>
+  <div class="free-image">
+    <a href="https://storyset.com/people" target="_blank" rel="noopener">
+      <img src="Enthusiastic-cuate.png" alt="People illustrations by Storyset" style="width:100%;max-height:400px;object-fit:contain;" />
+    </a>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-final" id="contact">
+  <div class="cta-final-img">
+    <a href="https://storyset.com/people" target="_blank" rel="noopener">
+      <img src="Business_ethics-amico.png" alt="People illustrations by Storyset" style="width:100%;max-height:380px;object-fit:contain;" />
+    </a>
+  </div>
+  <div class="cta-text">
+    <h2>Gagnez du temps.<br>Trouvez le bon partenaire dès maintenant.</h2>
+    <a href="#formulaire" class="btn-cta">Demander une analyse gratuite</a>
+  </div>
+</section>
+
+<!-- FORMULAIRE CONTACT -->
+<section id="formulaire" style="background:#f5f5f5;padding:80px 48px;">
+  <div style="max-width:640px;margin:0 auto;">
+    <h2 style="font-family:'Helvetica Now','Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:800;font-size:clamp(1.8rem,3vw,2.4rem);margin-bottom:12px;">Analysez votre besoin</h2>
+    <p style="color:#666;margin-bottom:40px;font-size:0.95rem;">Remplissez ce formulaire, nous revenons vers vous sous 24h.</p>
+
+    <div id="form-success" style="display:none;background:var(--green);color:#111;padding:20px 24px;border-radius:12px;font-weight:600;font-size:1rem;margin-bottom:24px;">
+      ✅ Merci ! Nous vous recontactons dans les 24h.
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:20px;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div>
+          <label style="font-size:0.8rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:#444;display:block;margin-bottom:6px;">Prénom *</label>
+          <input id="f-prenom" type="text" placeholder="Marie" style="width:100%;padding:12px 16px;border:2px solid #ddd;border-radius:8px;font-size:0.95rem;font-family:inherit;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='#3333FF'" onblur="this.style.borderColor='#ddd'" />
+        </div>
+        <div>
+          <label style="font-size:0.8rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:#444;display:block;margin-bottom:6px;">Nom *</label>
+          <input id="f-nom" type="text" placeholder="Dupont" style="width:100%;padding:12px 16px;border:2px solid #ddd;border-radius:8px;font-size:0.95rem;font-family:inherit;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='#3333FF'" onblur="this.style.borderColor='#ddd'" />
+        </div>
+      </div>
+
+      <div>
+        <label style="font-size:0.8rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:#444;display:block;margin-bottom:6px;">Entreprise *</label>
+        <input id="f-entreprise" type="text" placeholder="Nom de votre société" style="width:100%;padding:12px 16px;border:2px solid #ddd;border-radius:8px;font-size:0.95rem;font-family:inherit;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='#3333FF'" onblur="this.style.borderColor='#ddd'" />
+      </div>
+
+      <div>
+        <label style="font-size:0.8rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:#444;display:block;margin-bottom:6px;">Email professionnel *</label>
+        <input id="f-email" type="email" placeholder="marie.dupont@entreprise.com" style="width:100%;padding:12px 16px;border:2px solid #ddd;border-radius:8px;font-size:0.95rem;font-family:inherit;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='#3333FF'" onblur="this.style.borderColor='#ddd'" />
+      </div>
+
+      <div>
+        <label style="font-size:0.8rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:#444;display:block;margin-bottom:6px;">Type de besoin *</label>
+        <select id="f-besoin" style="width:100%;padding:12px 16px;border:2px solid #ddd;border-radius:8px;font-size:0.95rem;font-family:inherit;outline:none;background:white;cursor:pointer;transition:border-color 0.2s;" onfocus="this.style.borderColor='#3333FF'" onblur="this.style.borderColor='#ddd'">
+          <option value="">Sélectionnez...</option>
+          <option>CDI</option>
+          <option>Freelance</option>
+          <option>CDI + Freelance</option>
+        </select>
+      </div>
+
+      <div>
+        <label style="font-size:0.8rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:#444;display:block;margin-bottom:6px;">Domaine d'expertise recherché</label>
+        <select id="f-expertise" style="width:100%;padding:12px 16px;border:2px solid #ddd;border-radius:8px;font-size:0.95rem;font-family:inherit;outline:none;background:white;cursor:pointer;transition:border-color 0.2s;" onfocus="this.style.borderColor='#3333FF'" onblur="this.style.borderColor='#ddd'">
+          <option value="">Sélectionnez...</option>
+          <option>Data / IA</option>
+          <option>Actuariat & Souscription</option>
+          <option>Audit</option>
+          <option>Risque & Conformité</option>
+          <option>Finance Qualitative</option>
+          <option>Finance d'entreprise</option>
+          <option>Autre</option>
+        </select>
+      </div>
+
+      <div>
+        <label style="font-size:0.8rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:#444;display:block;margin-bottom:6px;">Décrivez votre besoin</label>
+        <textarea id="f-message" rows="4" placeholder="Poste à pourvoir, contexte, délais..." style="width:100%;padding:12px 16px;border:2px solid #ddd;border-radius:8px;font-size:0.95rem;font-family:inherit;outline:none;resize:vertical;transition:border-color 0.2s;" onfocus="this.style.borderColor='#3333FF'" onblur="this.style.borderColor='#ddd'"></textarea>
+      </div>
+
+      <button onclick="submitForm()" style="padding:14px 32px;background:var(--blue);color:white;border:none;border-radius:8px;font-family:'Helvetica Now','Helvetica Neue',Helvetica,Arial,sans-serif;font-size:0.85rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:background 0.2s;align-self:flex-start;" onmouseover="this.style.background='#2222cc'" onmouseout="this.style.background='#3333FF'">
+        Envoyer ma demande →
+      </button>
+    </div>
+  </div>
+</section>
+
+<script>
+async function submitForm() {
+  const prenom = document.getElementById('f-prenom').value.trim();
+  const nom = document.getElementById('f-nom').value.trim();
+  const entreprise = document.getElementById('f-entreprise').value.trim();
+  const email = document.getElementById('f-email').value.trim();
+  const besoin = document.getElementById('f-besoin').value;
+  const expertise = document.getElementById('f-expertise').value;
+  const message = document.getElementById('f-message').value.trim();
+
+  if (!prenom || !nom || !entreprise || !email || !besoin) {
+    alert('Merci de remplir tous les champs obligatoires (*).');
+    return;
+  }
+  if (!email.includes('@')) {
+    alert('Merci d\'entrer un email valide.');
+    return;
+  }
+
+  const btn = event.target;
+  btn.textContent = 'Envoi en cours...';
+  btn.disabled = true;
+
+  try {
+    const res = await fetch('https://formspree.io/f/mjgayeoz', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ prenom, nom, entreprise, email, besoin, expertise, message })
+    });
+
+    if (res.ok) {
+      document.getElementById('form-success').style.display = 'block';
+      document.getElementById('form-success').scrollIntoView({ behavior: 'smooth' });
+      // Reset fields
+      ['f-prenom','f-nom','f-entreprise','f-email','f-besoin','f-expertise','f-message'].forEach(id => document.getElementById(id).value = '');
+    } else {
+      alert('Une erreur est survenue. Veuillez réessayer.');
+    }
+  } catch(e) {
+    alert('Une erreur réseau est survenue. Veuillez réessayer.');
+  }
+
+  btn.textContent = 'Envoyer ma demande →';
+  btn.disabled = false;
+}
+</script>
+
+<!-- FOOTER -->
+<footer>
+  <div class="logo">◆ TALENSIS</div>
+  <p>Nous trouvons le bon cabinet pour vos talents</p>
+</footer>
+
+</body>
+</html>

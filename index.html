@@ -431,6 +431,120 @@
     margin-bottom: 16px;
   }
 
+  /* QUI SOMMES-NOUS */
+  .about {
+    background: var(--dark);
+    padding: var(--section-v) var(--side);
+  }
+  .about-inner {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 80px;
+    align-items: center;
+  }
+  .about-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 20px;
+  }
+  .about h2 {
+    font-family: 'Helvetica Now', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 800;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 24px;
+  }
+  .about-green { color: var(--green); }
+  .about-lead {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.9);
+    font-weight: 500;
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+  .about-body {
+    font-size: 0.92rem;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.7;
+    margin-bottom: 14px;
+  }
+  .about-stats {
+    display: flex;
+    gap: 40px;
+    margin-top: 36px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .about-stat-num {
+    font-family: 'Helvetica Now', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 2.4rem;
+    font-weight: 900;
+    color: var(--green);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .about-stat-label {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+  }
+  .about-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px;
+    padding: 36px 32px;
+  }
+  .about-avatar {
+    width: 72px; height: 72px;
+    background: var(--blue);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Helvetica Now', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 900;
+    font-size: 1.3rem;
+    color: white;
+    margin-bottom: 16px;
+    border: 3px solid var(--green);
+  }
+  .about-name {
+    font-family: 'Helvetica Now', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 800;
+    font-size: 1.2rem;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+  .about-role {
+    font-size: 0.85rem;
+    color: var(--green);
+    font-weight: 500;
+    margin-bottom: 20px;
+  }
+  .about-divider {
+    height: 1px;
+    background: rgba(255,255,255,0.1);
+    margin-bottom: 20px;
+  }
+  .about-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .about-tag {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: rgba(255,255,255,0.75);
+    font-size: 0.78rem;
+    padding: 5px 12px;
+    border-radius: 100px;
+    font-weight: 500;
+  }
+
   /* FORMULAIRE */
   #formulaire {
     padding: var(--section-v) var(--side);
@@ -460,6 +574,8 @@
     .cta-final { grid-template-columns: 1fr; }
     .cta-final-img { display: none; }
     .positioning-grid { grid-template-columns: 1fr; }
+    .about-inner { grid-template-columns: 1fr; gap: 40px; }
+    .about-stats { gap: 24px; flex-wrap: wrap; }
     nav { flex-direction: column; align-items: flex-start; gap: 4px; }
     .nav-tagline { display: none; }
     footer { flex-direction: column; text-align: center; }
@@ -481,7 +597,7 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-text">
-    <h1>Le comparateur de cabinets de recrutement spécialisé<br>Banque & Assurance.</h1>
+    <h1>Le comparateur de cabinets de recrutement spécialisé Banque & Assurance.</h1>
     <p>Comparez, sélectionnez et entrez en relation avec le bon cabinet. Service 100% digital et <strong>gratuit</strong> pour les clients finaux.</p>
     <a href="#formulaire" class="btn-primary">Comparer les cabinets gratuitement</a>
   </div>
@@ -515,7 +631,7 @@
       <div class="pain-icon">✕</div>
       <div class="pain-item-text">
         <h4>Manque de spécialisation réelle</h4>
-        <p>Nous travaillons uniquement avec des cabinets spécialisés dans vos niches.</p>
+        <p>Nous travaillons uniquement avec des cabinets spécialisés en Banque & Assurance.</p>
       </div>
     </div>
   </div>
@@ -524,7 +640,7 @@
 <!-- POSITIONNEMENT COMPARATEUR -->
 <section class="positioning">
   <div class="eyebrow">Notre positionnement</div>
-  <h2>Le seul comparateur de cabinets de recrutement<br>spécialisé Banque & Assurance.</h2>
+  <h2>Nous comparons les cabinets de recrutement<br>spécialisés Banque & Assurance.</h2>
   <div class="positioning-grid">
     <div class="positioning-item">
       <div class="positioning-tag">Étape 1</div>
@@ -543,29 +659,6 @@
       <div class="positioning-number">03</div>
       <h3>Être mis en relation</h3>
       <p>Nous organisons une mise en relation directe et qualifiée avec le bon cabinet. Vous gagnez du temps, nous gérons le reste.</p>
-    </div>
-  </div>
-</section>
-
-<!-- SELECTION -->
-<section class="selection">
-  <h2>Nous faisons la sélection pour vous.</h2>
-  <div class="cards-grid">
-    <div class="card">
-      <img src="Select-cuate.png" alt="People illustrations by Storyset" style="width:100%;height:200px;object-fit:contain;background:#1a1a2e;" />
-      <div class="card-label">Sélection spécialisée</div>
-    </div>
-    <div class="card">
-      <img src="Select-bro.png" alt="People illustrations by Storyset" style="width:100%;height:200px;object-fit:contain;background:#1a1a2e;" />
-      <div class="card-label">Matching qualité</div>
-    </div>
-    <div class="card">
-      <img src="Customer_relationship_management-rafiki.png" alt="Work illustrations by Storyset" style="width:100%;height:200px;object-fit:contain;background:#1a1a2e;" />
-      <div class="card-label">Mise en relation rapide</div>
-    </div>
-    <div class="card">
-      <img src="Online_world-amico.png" alt="Online illustrations by Storyset" style="width:100%;height:200px;object-fit:contain;background:#1a1a2e;" />
-      <div class="card-label">100% digital</div>
     </div>
   </div>
 </section>
@@ -651,6 +744,48 @@
   </div>
   <div class="free-image">
     <img src="Enthusiastic-cuate.png" alt="People illustrations by Storyset" style="width:100%;max-height:400px;object-fit:contain;" />
+  </div>
+</section>
+
+<!-- QUI SOMMES-NOUS -->
+<section class="about">
+  <div class="about-inner">
+    <div class="about-text">
+      <div class="about-eyebrow">Qui sommes-nous</div>
+      <h2>Née du terrain.<br>Construite pour <span class="about-green">vous faire gagner du temps.</span></h2>
+      <p class="about-lead">Je suis Cynthia Laurent, recruteuse freelance depuis 25 ans, spécialisée en Banque, Assurance et Asset Management.</p>
+      <p class="about-body">En 25 ans, j'ai placé plus de 500 candidats en France et en Belgique. J'ai vu des centaines de cabinets apparaître et disparaître. J'ai observé, de l'intérieur, le temps perdu par les clients finaux à chercher le bon partenaire de recrutement — sans visibilité réelle sur leur qualité, leur spécialisation ou leur sérieux.</p>
+      <p class="about-body">J'ai créé Talensis pour résoudre ce problème. Je connais cette niche mieux que personne. Mon rôle : vous connecter directement avec le bon cabinet, sans perte de temps, sans risque.</p>
+      <div class="about-stats">
+        <div class="about-stat">
+          <div class="about-stat-num">500+</div>
+          <div class="about-stat-label">Candidats placés</div>
+        </div>
+        <div class="about-stat">
+          <div class="about-stat-num">25</div>
+          <div class="about-stat-label">Ans d'expertise</div>
+        </div>
+        <div class="about-stat">
+          <div class="about-stat-num">2</div>
+          <div class="about-stat-label">Pays — FR & BE</div>
+        </div>
+      </div>
+    </div>
+    <div class="about-profile">
+      <div class="about-card">
+        <div class="about-avatar">CL</div>
+        <div class="about-name">Cynthia Laurent</div>
+        <div class="about-role">Fondatrice de Talensis</div>
+        <div class="about-divider"></div>
+        <div class="about-tags">
+          <span class="about-tag">Recruteuse freelance</span>
+          <span class="about-tag">25 ans d'expérience</span>
+          <span class="about-tag">Banque & Assurance</span>
+          <span class="about-tag">Asset Management</span>
+          <span class="about-tag">France · Belgique</span>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 

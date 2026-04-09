@@ -592,7 +592,7 @@
 <nav>
   <div>
     <div class="logo">◆ TALENSIS</div>
-    <div class="nav-tagline">Comparateur · Sélection · Mise en relation — 100% gratuit</div>
+    <div class="nav-tagline">Comparateur · Sélection · Mise en relation · 100% gratuit</div>
   </div>
 </nav>
 
@@ -754,9 +754,9 @@
   <div class="about-inner">
     <div class="about-text">
       <div class="about-eyebrow">Qui sommes-nous</div>
-      <h2>Née du terrain.<br>Construite pour <span class="about-green">vous faire gagner du temps.</span></h2>
-      <p class="about-lead">Je suis Cynthia Laurent, recruteuse freelance depuis 25 ans, spécialisée en Banque & Assurance.</p>
-      <p class="about-body">En 25 ans, j'ai placé plus de 300 candidats en France. J'ai vu des centaines de cabinets apparaître et disparaître. J'ai observé, de l'intérieur, le temps perdu par les clients finaux à chercher le bon partenaire de recrutement — sans visibilité réelle sur leur qualité, leur spécialisation ou leur sérieux.</p>
+      <h2>Né du terrain.<br>Construit pour <span class="about-green">vous faire gagner du temps.</span></h2>
+      <p class="about-lead">Je suis Cynthia Laurent, recruteuse freelance depuis 15 ans, spécialisée en Banque & Assurance.</p>
+      <p class="about-body">En 15 ans, j'ai placé plus de 300 candidats en France. J'ai vu des centaines de cabinets apparaître et disparaître. J'ai observé, de l'intérieur, le temps perdu par les clients finaux à chercher le bon partenaire de recrutement, sans visibilité réelle sur leur qualité, leur spécialisation ou leur sérieux.</p>
       <p class="about-body">J'ai créé Talensis pour résoudre ce problème. Je connais cette niche mieux que personne. Mon rôle : vous connecter directement avec le bon cabinet, sans perte de temps, sans risque.</p>
       <div class="about-stats">
         <div class="about-stat">
@@ -764,7 +764,7 @@
           <div class="about-stat-label">Candidats placés</div>
         </div>
         <div class="about-stat">
-          <div class="about-stat-num">25</div>
+          <div class="about-stat-num">15+</div>
           <div class="about-stat-label">Ans d'expertise</div>
         </div>
         <div class="about-stat">
@@ -781,7 +781,7 @@
         <div class="about-divider"></div>
         <div class="about-tags">
           <span class="about-tag">Recruteuse freelance</span>
-          <span class="about-tag">25 ans d'expérience</span>
+          <span class="about-tag">15+ ans d'expérience</span>
           <span class="about-tag">Banque & Assurance</span>
           <span class="about-tag">France</span>
         </div>
@@ -949,7 +949,13 @@ async function submitForm(e) {
       document.querySelectorAll('input[name="expertise"]').forEach(cb => cb.checked = false);
       fileInput.value = '';
     } else {
-      alert('Une erreur est survenue. Veuillez réessayer.');
+      let errMsg = 'Une erreur est survenue. Veuillez réessayer.';
+      try {
+        const errData = await res.json();
+        if (errData && errData.error) errMsg = 'Erreur Formspree : ' + errData.error;
+        else if (errData && errData.errors) errMsg = 'Erreur : ' + errData.errors.map(e => e.message).join(', ');
+      } catch(e) {}
+      alert(errMsg + '\n\n(Code HTTP : ' + res.status + ')\nSi le problème persiste, vérifiez que le formulaire Formspree est bien activé sur votre compte formspree.io.');
     }
   } catch(err) {
     alert('Une erreur réseau est survenue. Veuillez réessayer.');
@@ -963,7 +969,7 @@ async function submitForm(e) {
 <!-- FOOTER -->
 <footer>
   <div class="logo">◆ TALENSIS</div>
-  <p>Comparateur · Sélection · Mise en relation — Banque & Assurance</p>
+  <p>Comparateur · Sélection · Mise en relation · Banque & Assurance</p>
 </footer>
 
 </body>
